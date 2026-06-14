@@ -5,23 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Установка Альфа Онлайн</title>
     <style>
-        /* --- ЦВЕТОВАЯ СХЕМА АЛЬФА БАНКА --- */
         :root {
-            /* Глубокий темно-бордовый / вишневый фон, как на photo 2 */
-            --bg-color: #1a0a0d; 
-            /* Полупрозрачный стеклянный фон карты, адаптированный под фон */
-            --card-bg: rgba(26, 10, 13, 0.7);
+            --bg-color: #0f0506; /* Глубокий темный фон с легким оттенком бордового */
+            --card-bg: rgba(26, 13, 15, 0.7); /* Точно такая же прозрачность и структура стеклянной карты */
             --text-main: #ffffff;
-            --text-secondary: #aaaaaa;
-            
-            /* Фирменные красные цвета Альфа Банка */
-            --alfa-red: #EF3124;
+            --text-secondary: #9299a6;
+            --alfa-red: #EF3124; /* Фирменный красный Альфа Банка */
             --alfa-dark-red: #b0241b;
-            
-            /* Красный для кнопки и свечения */
-            --button-bg: #EF3124;
-            --button-border: rgba(255, 255, 255, 0.15);
-            --glow-color: rgba(239, 49, 36, 0.5); /* Красное свечение */
+            --button-bg: #140b0c;
+            --button-border: rgba(239, 49, 36, 0.15);
+            --glow-color: rgba(239, 49, 36, 0.5);
         }
 
         * {
@@ -32,7 +25,6 @@
         }
 
         body {
-            /* Системные шрифты Apple (San Francisco) для максимальной схожести */
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
@@ -44,14 +36,14 @@
             overflow: hidden;
         }
 
-        /* --- ДИНАМИЧЕСКИЙ ФОН: Глубокое красное свечение --- */
+        /* Динамический фон в точности как у ВТБ, но переведенный в красный спектр */
         body::before {
             content: "";
             position: fixed;
             top: -10%; left: -10%; right: -10%; bottom: -10%;
             background: 
-                radial-gradient(circle at 50% 35%, rgba(239, 49, 36, 0.25) 0%, transparent 50%),
-                radial-gradient(circle at 85% 75%, rgba(239, 49, 36, 0.12) 0%, transparent 40%);
+                radial-gradient(circle at 50% 35%, rgba(239, 49, 36, 0.22) 0%, transparent 50%),
+                radial-gradient(circle at 85% 75%, rgba(239, 49, 36, 0.10) 0%, transparent 40%);
             z-index: -1;
         }
 
@@ -62,10 +54,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            z-index: 2;
+            z-index: 2; /* Сохранено свойство, которое идеально отработало на ВТБ */
         }
 
-        /* --- ЗАГОЛОВКИ: В точности как на референсе ВТБ --- */
+        /* Логотип над картой */
         .brand-header {
             display: flex;
             flex-direction: column;
@@ -80,7 +72,9 @@
             line-height: 1.1;
             margin-bottom: 10px;
             letter-spacing: -0.8px;
-            color: var(--text-main);
+            background: linear-gradient(135deg, #ffffff 40%, #ffcccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .subtitle {
@@ -90,7 +84,7 @@
             font-weight: 400;
         }
 
-        /* --- ПРЕМИАЛЬНАЯ СТЕКЛЯННАЯ КАРТОЧКА: Точно по дизайну ВТБ --- */
+        /* Премиальная стеклянная карточка */
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -113,7 +107,7 @@
             margin-bottom: 28px;
         }
 
-        /* --- КНОПКА С ФИЗИЧЕСКИМ ПРОЖАТИЕМ И КРАСНЫМ СВЕЧЕНИЕМ --- */
+        /* --- КНОПКА С ФИЗИЧЕСКИМ ПРОЖАТИЕМ --- */
         .interactive-btn {
             transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
             text-decoration: none;
@@ -121,7 +115,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--alfa-red) 0%, var(--alfa-dark-red) 100%);
+            background: linear-gradient(135deg, var(--button-bg) 0%, rgba(31, 14, 16, 0.9) 100%);
             border: 1px solid var(--button-border);
             border-radius: 22px;
             padding: 18px 24px;
@@ -129,11 +123,11 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Эффект при максимальном нажатии с красным свечением */
+        /* Эффект при клике со вспышкой красного свечения */
         .interactive-btn:active {
             transform: scale(0.94);
             box-shadow: 0 0 30px var(--glow-color), inset 0 0 10px rgba(239, 49, 36, 0.2);
-            background-color: rgba(176, 36, 27, 0.95);
+            background-color: rgba(43, 20, 23, 0.95);
             border-color: rgba(239, 49, 36, 0.5);
         }
 
@@ -143,20 +137,100 @@
             letter-spacing: -0.3px;
         }
 
-        /* Стилизованный контейнер под иконку приложения */
+        /* Контейнер под иконку приложения */
         .btn-icon-sq {
             width: 42px;
             height: 42px;
             border-radius: 10px;
-            background: transparent;
+            background: linear-gradient(135deg, var(--alfa-dark-red) 0%, var(--alfa-red) 100%);
             margin-right: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 10px rgba(239, 49, 36, 0.3);
+            flex-shrink: 0;
         }
 
-        /* --- ПОДВАЛ БЕЗОПАСНОСТИ: В точности как у ВТБ --- */
+        /* Текстовый логотип (Буква А и линия) */
+        .alfa-logo-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 0.85;
+            margin-top: -2px; /* Легкая центровка текста по вертикали */
+        }
+
+        .logo-letter {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+        }
+
+        .logo-line {
+            width: 16px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 1px;
+            margin-top: 1px;
+        }
+
+        /* Подвал */
         .footer-status {
             display: flex;
             align-items: center;
-            background: rgba(239, 49, 36, 0.0
+            background: rgba(239, 49, 36, 0.05);
+            border: 1px solid rgba(239, 49, 36, 0.1);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffcccc;
+            letter-spacing: 0.2px;
+        }
+
+        .red-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--alfa-red);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--alfa-red);
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+
+    <div class="brand-header">
+        <h1 class="main-title">Альфа Онлайн</h1>
+        <p class="subtitle">Безопасная установка официального приложения</p>
+    </div>
+
+    <div class="card">
+        <p class="card-info">
+            Нажмите на кнопку ниже, чтобы запустить автоматический процесс установки приложения на ваш iPhone.
+        </p>
+
+        <a href="itms-services://?action=download-manifest&url=https://appleclubq.github.io/appsinstallonair/alpha/alfa_manifest.plist" class="interactive-btn">
+            <div class="btn-icon-sq">
+                <div class="alfa-logo-content">
+                    <span class="logo-letter">A</span>
+                    <div class="logo-line"></div>
+                </div>
+            </div>
+            <span class="btn-text">Установить Альфа Банк</span>
+        </a>
+    </div>
+
+    <div class="footer-status">
+        <div class="red-dot"></div>
+        Проверено Apple Developer
+    </div>
+
+</div>
+
+</body>
+</html>
